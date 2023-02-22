@@ -1,0 +1,25 @@
+.appointment-card {
+  display: block;
+  min-width: 280px;
+  max-width: 350px;
+  width: 19%;
+  border: 1px solid #1976d2;
+  border-radius: 20px;
+  padding: 15px;
+  margin-right: 1%;
+  margin-bottom: 1%;
+
+  &__buttons {
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &-approved {
+    color: #2e7d32;
+  }
+
+  &-declined {
+    color: #d32f2f;
+  }
+}

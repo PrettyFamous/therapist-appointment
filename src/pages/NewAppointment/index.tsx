@@ -10,33 +10,32 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
+import dayjs, { Dayjs } from "dayjs";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { DatePicker } from "@mui/x-date-pickers";
-import dayjs, { Dayjs } from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { useFormControls } from "../../hooks/useFormControls";
 
 import "./NewAppointment.scss";
-import { useFormControls } from "../../hooks/useFormControls";
 
 const inputFieldValues = [
   {
     name: "fullName",
     label: "ФИО*",
-    id: "my-name",
   },
   {
     name: "phone",
     label: "Телефон*",
-    id: "my-phone",
   },
   {
     name: "email",
     label: "Email",
-    id: "my-email",
   },
 ];
+
+export const disiases = ["Другое", "Артрит", "Пневмония", "Мигрень"];
 
 const NewAppointment: React.FC = () => {
   const {
@@ -47,7 +46,8 @@ const NewAppointment: React.FC = () => {
     errors,
   } = useFormControls();
   const [date, setDate] = useState<Dayjs | null>(null);
-  const [age, setAge] = useState("");
+  const [disease, setDisease] = useState<string>("");
+  const [isVisible, setIsVisible] = useState(false);
 
   return (
     <Container className="container" maxWidth="md">
@@ -80,24 +80,44 @@ const NewAppointment: React.FC = () => {
 
           <div className="new-appointment__form--select">
             <FormControl fullWidth>
-              <InputLabel id="demo-simple-select-label">Заболевание</InputLabel>
+              <InputLabel id="demo-simple-select-label">
+                Заболевание*
+              </InputLabel>
               <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
-                value={age}
+                value={disease}
+                name="disease"
                 label="Заболевание*"
                 onChange={(e) => {
-                  setAge(e.target.value);
+                  setIsVisible(true);
+                  setDisease(e.target.value);
                   handleInputValue(e);
                 }}
               >
-                <MenuItem value={1}>Артрит</MenuItem>
-                <MenuItem value={2}>Пневмония</MenuItem>
-                <MenuItem value={3}>Мигрень</MenuItem>
-                <MenuItem value={0}>Другое</MenuItem>
+                {disiases.map((item, index) => (
+                  <MenuItem value={index}>{item}</MenuItem>
+                ))}
               </Select>
             </FormControl>
           </div>
+
+          {!disease && isVisible && (
+            <TextField
+              margin="dense"
+              onBlur={handleInputValue}
+              onChange={handleInputValue}
+              name="description"
+              label="Описание заболевания*"
+              rows={5}
+              autoComplete="none"
+              multiline
+              {...(errors["description"] && {
+                error: true,
+                helperText: errors["description"],
+              })}
+            />
+          )}
 
           <Typography id="discrete-slider-small-steps" gutterBottom>
             Тяжесть заболевания*

@@ -1,0 +1,21 @@
+.admin-panel {
+  &--button-out {
+    position: absolute;
+    right: 1%;
+    top: 0.6vh;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    align-items: center;
+    left: 50%;
+  }
+
+  &__wrapper {
+    margin-left: 10%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
