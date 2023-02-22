@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  background: #fff;
+
+  h2 {
+    font: 3em sans-serif;
+    font-weight: 700;
+    color: #1976d2;
+    margin-bottom: 1%;
+    margin-top: -20%;
+  }
+
+  .main-page {
+    &--button {
+      font-size: large;
+      min-width: 200px;
+      margin-top: 7%;
+      margin-right: 1%;
+    }
+  }
+}

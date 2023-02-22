@@ -1,0 +1,31 @@
+.new-appointment {
+  &__buttons {
+    display: flex;
+
+    .new-appointment--button {
+      font-size: large;
+      min-width: 200px;
+      margin-top: 2vh;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+
+    #discrete-slider-small-steps {
+      font: 1em sans-serif;
+      color: rgba(0, 0, 0, 0.6);
+      margin-bottom: 1%;
+      margin-top: 4%;
+    }
+
+    &--date {
+      margin-bottom: 3%;
+    }
+
+    &--select {
+      margin-top: 2%;
+    }
+  }
+}
