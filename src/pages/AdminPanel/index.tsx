@@ -34,14 +34,7 @@ const AdminPanel: React.FC = () => {
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
-          <Box
-            display="flex"
-            flexDirection="column"
-            justifyContent="center"
-            alignItems="center"
-          >
-            <ActiveAppointments />
-          </Box>
+          <ActiveAppointments />
         </TabPanel>
         <TabPanel value={value} index={1}>
           <ArchiveAppointments />

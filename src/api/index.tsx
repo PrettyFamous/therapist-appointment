@@ -28,18 +28,21 @@ export const postAppointment = (values: formValues) => {
     description: disease == "0" ? description : "",
     disease,
     status: "NEW",
+    createdAt: new Date(),
   };
 
   axios.post(mainURL + "appointments", res);
 };
 
 export const getNewAppointments = async () => {
-  return await axios.get<fetchedData[]>(mainURL + "appointments?status=NEW");
+  return await axios.get<fetchedData[]>(
+    mainURL + "appointments?status=NEW&sortBy=createdAt&order=desc"
+  );
 };
 
 export const getArchiveAppointments = async () => {
   return await axios.get<fetchedData[]>(
-    mainURL + "appointments?status=ARCHIVE"
+    mainURL + "appointments?status=ARCHIVE&sortBy=createdAt&order=desc"
   );
 };
 

@@ -96,7 +96,9 @@ const NewAppointment: React.FC = () => {
                 }}
               >
                 {disiases.map((item, index) => (
-                  <MenuItem value={index}>{item}</MenuItem>
+                  <MenuItem key={index} value={index}>
+                    {item}
+                  </MenuItem>
                 ))}
               </Select>
             </FormControl>
