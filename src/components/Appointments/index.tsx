@@ -45,11 +45,15 @@ const Appointments: React.FC<IAppointments> = ({ isArchive }) => {
   };
 
   useEffect(() => {
-    getAppointments(isArchive, page, search).then((response) => {
-      setData(response.data.items);
-      setCount(Math.floor(response.data.count / 12) + 1);
-      setIsLoading(false);
-    });
+    getAppointments(isArchive, page, search)
+      .then((response) => {
+        setData(response.data.items);
+        setCount(Math.floor(response.data.count / 12) + 1);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        alert("Что-то пошло не так.", error);
+      });
   }, [page, search]);
 
   return isLoading ? (
