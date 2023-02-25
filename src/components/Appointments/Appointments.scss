@@ -1,0 +1,57 @@
+.appointments {
+  &__wrapper {
+    margin-left: 8%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__pagination {
+    margin-top: 2%;
+    display: inline-flex;
+  }
+
+  &__search {
+    position: absolute;
+    top: 1%;
+    left: 40%;
+    border-radius: 20px;
+    width: 60%;
+    background-color: rgba(256, 256, 256, 0.15);
+    margin-left: 0;
+
+    @media (max-width: 800px) {
+      left: 50%;
+    }
+
+    @media (max-width: 610px) {
+      display: none;
+    }
+
+    &--icon {
+      position: absolute;
+      z-index: 2;
+      margin-top: 0.2%;
+      margin-left: 0.2%;
+      color: #bbb;
+    }
+
+    &--input {
+      min-width: 200px;
+      border: 1px solid #bbb;
+      padding-left: calc(1.5% + 10px);
+      height: 3vh;
+      border-radius: 10px;
+      transition: margin-right ease-in-out;
+      width: 15%;
+
+      &:focus {
+        width: 25%;
+        border: 1px solid #bbb;
+      }
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

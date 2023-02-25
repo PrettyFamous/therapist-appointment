@@ -34,15 +34,16 @@ export const postAppointment = (values: formValues) => {
   axios.post(mainURL + "appointments", res);
 };
 
-export const getNewAppointments = async () => {
-  return await axios.get<fetchedData[]>(
-    mainURL + "appointments?status=NEW&sortBy=createdAt&order=desc"
-  );
-};
+export const getAppointments = async (
+  isArchive: number,
+  page: number,
+  search: string
+) => {
+  const status = isArchive === 1 ? "ARCHIVE" : "NEW";
 
-export const getArchiveAppointments = async () => {
-  return await axios.get<fetchedData[]>(
-    mainURL + "appointments?status=ARCHIVE&sortBy=createdAt&order=desc"
+  return await axios.get(
+    mainURL +
+      `appointments?&status=${status}&fullName=${search}&sortBy=createdAt&order=desc&page=${page}&limit=12`
   );
 };
 

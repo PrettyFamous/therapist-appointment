@@ -1,4 +1,5 @@
 import {
+  Alert,
   Box,
   Button,
   Container,
@@ -7,6 +8,7 @@ import {
   MenuItem,
   Select,
   Slider,
+  Snackbar,
   TextField,
   Typography,
 } from "@mui/material";
@@ -48,6 +50,16 @@ const NewAppointment: React.FC = () => {
   const [date, setDate] = useState<Dayjs | null>(null);
   const [disease, setDisease] = useState<string>("");
   const [isVisible, setIsVisible] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const handleClose = (
+    event?: React.SyntheticEvent | Event,
+    reason?: string
+  ) => {
+    if (reason !== "clickaway") {
+      setOpen(false);
+    }
+  };
 
   return (
     <Container className="container" maxWidth="md">
@@ -162,9 +174,19 @@ const NewAppointment: React.FC = () => {
               variant="contained"
               type="submit"
               disabled={!formIsValid()}
+              onClick={() => setOpen(true)}
             >
               Записаться
             </Button>
+            <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
+              <Alert
+                onClose={handleClose}
+                severity="success"
+                sx={{ width: "100%" }}
+              >
+                Ваша заявка была отправлена на рассмотрение.
+              </Alert>
+            </Snackbar>
           </div>
         </form>
       </Box>

@@ -85,7 +85,6 @@ export const useFormControls = () => {
     e.preventDefault();
     if (formIsValid()) {
       await postAppointment(values);
-      alert("Заявка успешно отправлена на рассмотрение!");
     }
   };
 

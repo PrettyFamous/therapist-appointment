@@ -1,11 +1,10 @@
-import { Box, Tabs, Tab, Button } from "@mui/material";
+import { Box, Tabs, Tab, Button, Snackbar, Alert } from "@mui/material";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
 import TabPanel from "../../components/TabPanel";
 import NotFound from "../NotFound";
-import ActiveAppointments from "../../components/ActiveAppoitments";
-import ArchiveAppointments from "../../components/ArchiveAppointments";
+import Appointments from "../../components/Appointments";
 
 import "./AdminPanel.scss";
 
@@ -34,13 +33,12 @@ const AdminPanel: React.FC = () => {
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
-          <ActiveAppointments />
+          <Appointments isArchive={value} />
         </TabPanel>
         <TabPanel value={value} index={1}>
-          <ArchiveAppointments />
+          <Appointments isArchive={value} />
         </TabPanel>
       </Box>
-
       <Link to="/" className="admin-panel--button-out">
         <Button onClick={() => localStorage.clear()}>Выйти</Button>
       </Link>
