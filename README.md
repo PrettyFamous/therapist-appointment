@@ -1,70 +1,34 @@
-# Getting Started with Create React App
+# Тестовое задание на стажировку в РЕЛЕКС
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Экран выбора роли
 
-## Available Scripts
+Возможность выбора оджной из двух ролей: пациент или администратор
 
-In the project directory, you can run:
+## Форма записи на приём
 
-### `npm start`
+Переход на экран осуществляется при выборе роли "пациент".
+Проверка заполненности обязательных полей.
+Валидация полей (телефон и email).
+Email является необязательным полем.
+При выборе заболевания "Другое", появляется дополнительное поле для описания заболевания (являестя обязательным для типа заболевания "другое").
+Кнопка "Записаться" остаётся неактивнйо до момента успешног опрохождения всех проверок.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Форма авторизации
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Переход на экран осуществляется при выборе роли "администратор".
+В поле логин допустимыми форматами строки являются телефон или email.
+В моём стор-сервисе нет возможности генерации токенов, поэтому я сымитировал его получение (если логин и пароль соответствуют захардкоженым значениям, в localStorage кладется токен).
 
-### `npm test`
+## Панель администратора
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Все заявки сортируются по дате создания (от новых к старым)
+Админимтратор может подтвердить или отклонить заявку.
+После изменения статуса, заявка попадает в раздел "архивные".
+Есть пагинация.
+Сделал поиск, но, к сожалению, мой стор-сервис не позволяет фильтровать сразу по двум полям (по крайней мере в бесплатной версии), а поле status уже используется для фильтрации заявок по значению "NEW" и "ARCHIVE".
+По нажатию на кнопку "выход" из localStorage удаляется токен, и происходит перенаправление на главную страницу.
 
-### `npm run build`
+## Другое
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+При попытке переместиться на несуществующий Route, посредством изменения URL, пользователю выведется экран "NotFound".
+При попытке переместиться на панель администратора, посредством изменения URL, в случае отсутствия токена в localStorage, пользователю выведется экран "NotFound".
