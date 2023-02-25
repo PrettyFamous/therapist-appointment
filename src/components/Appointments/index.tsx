@@ -52,7 +52,7 @@ const Appointments: React.FC<IAppointments> = ({ isArchive }) => {
         setIsLoading(false);
       })
       .catch((error) => {
-        alert("Что-то пошло не так.", error);
+        alert("Что-то пошло не так." + error);
       });
   }, [page, search]);
 
