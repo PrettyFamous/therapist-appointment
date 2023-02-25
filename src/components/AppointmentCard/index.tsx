@@ -74,14 +74,14 @@ const AppointmentCard: React.FC<IAppointmentCardProps> = (props) => {
         <b>Email:</b> {email}
       </p>
       <p>
-        <b>Болезнь:</b>{" "}
+        <b>Болезнь: </b>
         {disease != "0" ? disiases[Number(disease)] : description}
       </p>
       <p>
         <b>Степень тяжести:</b> {symptomas}
       </p>
       <p>
-        <b>Дата записи:</b> {date}
+        <b>Дата записи:</b> {date.substring(0, 16)}
       </p>
       <div className="appointment-card__buttons">
         {isAccepted === undefined ? (
